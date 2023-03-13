@@ -3,5 +3,223 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "chat": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/chat",
+      "sourceRoot": "projects/chat/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/chat",
+            "index": "projects/chat/src/index.html",
+            "main": "projects/chat/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/chat/tsconfig.app.json",
+            "assets": [
+              "projects/chat/src/favicon.ico",
+              "projects/chat/src/assets"
+            ],
+            "styles": [
+              "projects/chat/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "chat:build:production"
+            },
+            "development": {
+              "browserTarget": "chat:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "chat:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/chat/tsconfig.spec.json",
+            "assets": [
+              "projects/chat/src/favicon.ico",
+              "projects/chat/src/assets"
+            ],
+            "styles": [
+              "projects/chat/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "ik": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/ik",
+      "sourceRoot": "projects/ik/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ik",
+            "index": "projects/ik/src/index.html",
+            "main": "projects/ik/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/ik/tsconfig.app.json",
+            "assets": [
+              "projects/ik/src/favicon.ico",
+              "projects/ik/src/assets"
+            ],
+            "styles": [
+              "projects/ik/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "ik:build:production"
+            },
+            "development": {
+              "browserTarget": "ik:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ik:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/ik/tsconfig.spec.json",
+            "assets": [
+              "projects/ik/src/favicon.ico",
+              "projects/ik/src/assets"
+            ],
+            "styles": [
+              "projects/ik/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "chat-lib": {
+      "projectType": "library",
+      "root": "projects/chat-lib",
+      "sourceRoot": "projects/chat-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/chat-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/chat-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/chat-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/chat-lib/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
   }
 }
